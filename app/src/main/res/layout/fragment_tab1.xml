@@ -1,0 +1,130 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFEBEE"
+    tools:context="vn.edu.hcmute.esdenglishpractise.fragment.Tab1Fragment">
+
+    <ImageView
+        android:id="@+id/imgGuide"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_side_nav_bar" />
+
+    <LinearLayout
+        android:id="@+id/action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgGuide"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:weightSum="1.0">
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/btnPlaySound"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Sound"
+            fancy:fb_defaultColor="@android:color/white"
+            fancy:fb_focusColor="#9bd823"
+            fancy:fb_fontIconResource="&#xf028;"
+            fancy:fb_fontIconSize="24sp"
+            fancy:fb_iconPosition="left"
+            fancy:fb_textColor="@android:color/black"
+            fancy:fb_textSize="18sp" />
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/btnOpenVideo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Video"
+            fancy:fb_defaultColor="@android:color/white"
+            fancy:fb_focusColor="#9bd823"
+            fancy:fb_fontIconResource="&#xf16a;"
+            fancy:fb_fontIconSize="24sp"
+            fancy:fb_iconPosition="left"
+            fancy:fb_textColor="@android:color/black"
+            fancy:fb_textSize="18sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_guide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/action"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/tvGuideText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:maxLines="10"
+            android:padding="8dp"
+            android:text="This is \n - name \n - gender"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_guide"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:weightSum="1.0">
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/btnOpenListening"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:layout_weight="0.5"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Listening"
+            fancy:fb_borderColor="#FFFFFF"
+            fancy:fb_borderWidth="1dp"
+            fancy:fb_defaultColor="#7ab800"
+            fancy:fb_focusColor="#9bd823"
+            fancy:fb_fontIconResource="&#xf11b;"
+            fancy:fb_fontIconSize="24sp"
+            fancy:fb_iconPosition="left"
+            fancy:fb_radius="5dp"
+            fancy:fb_textColor="#FFFFFF"
+            fancy:fb_textSize="24sp" />
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/btnOpenSpeaking"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="0.5"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="Speaking"
+            fancy:fb_borderColor="#FFFFFF"
+            fancy:fb_borderWidth="1dp"
+            fancy:fb_defaultColor="#7ab800"
+            fancy:fb_focusColor="#9bd823"
+            fancy:fb_fontIconResource="&#xf130;"
+            fancy:fb_fontIconSize="24sp"
+            fancy:fb_iconPosition="left"
+            fancy:fb_radius="5dp"
+            fancy:fb_textColor="#FFFFFF"
+            fancy:fb_textSize="24sp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

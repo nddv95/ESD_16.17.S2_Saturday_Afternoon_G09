@@ -13,7 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import vn.edu.hcmute.esdenglishpractise.R;
+import vn.edu.hcmute.esdenglishpractise.fragment.AboutFragment;
+import vn.edu.hcmute.esdenglishpractise.fragment.CustomSpeakingFragment;
 import vn.edu.hcmute.esdenglishpractise.fragment.HomeFragment;
+import vn.edu.hcmute.esdenglishpractise.fragment.SettingFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -85,11 +88,11 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             fragment = new HomeFragment();
         } else if (id == R.id.nav_speaking) {
-
+            fragment = new CustomSpeakingFragment();
         } else if (id == R.id.nav_about) {
-
+            fragment = new AboutFragment();
         } else if (id == R.id.nav_setting) {
-
+            fragment = new SettingFragment();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
