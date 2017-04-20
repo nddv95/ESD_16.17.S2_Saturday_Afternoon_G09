@@ -9,6 +9,8 @@ public class Lesson {
     private String lessonName;
     private String description;
     private String urlBackGround;
+    private int idSound1;
+    private int idSound2;
 
     public Lesson() {
     }

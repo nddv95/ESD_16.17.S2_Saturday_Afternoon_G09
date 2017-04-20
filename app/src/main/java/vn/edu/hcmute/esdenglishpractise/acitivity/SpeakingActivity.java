@@ -5,23 +5,21 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import vn.edu.hcmute.esdenglishpractise.R;
-import vn.edu.hcmute.esdenglishpractise.adapter.ViewPagerAdapter;
+import vn.edu.hcmute.esdenglishpractise.adapter.SpeakingViewPaperAdapter;
 
-public class GuideActivity extends AppCompatActivity {
+public class SpeakingActivity extends AppCompatActivity {
 
-    TabLayout mTabGuide;
+    TabLayout mTabSpeaking;
     Toolbar toolbar;
-    ViewPager mViewPagerGuide;
+    ViewPager mViewPagerSpeaking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guide);
+        setContentView(R.layout.activity_speaking);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -37,19 +35,19 @@ public class GuideActivity extends AppCompatActivity {
         });
 
         String titles[] = new String[]{"/u/", "/u:/"};
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), this, titles);
-        mViewPagerGuide = (ViewPager) findViewById(R.id.viewPaperGuide);
-        mViewPagerGuide.setAdapter(adapter);
+        SpeakingViewPaperAdapter adapter = new SpeakingViewPaperAdapter(getSupportFragmentManager(), this, titles);
+        mViewPagerSpeaking = (ViewPager) findViewById(R.id.viewPaperSpeaking);
+        mViewPagerSpeaking.setAdapter(adapter);
 
-        mTabGuide = (TabLayout) findViewById(R.id.tabGuide);
-        mTabGuide.setupWithViewPager(mViewPagerGuide);
-
+        mTabSpeaking = (TabLayout) findViewById(R.id.tabSpeaking);
+        mTabSpeaking.setupWithViewPager(mViewPagerSpeaking);
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_speaking, menu);
         return true;
     }
 
@@ -61,11 +59,11 @@ public class GuideActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_practice) {
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
 }

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -57,15 +59,40 @@ public class LessonDetailActivity extends AppCompatActivity implements View.OnCl
         switch (v.getId()) {
             case R.id.btnGuide:
                 Intent guideIntent = new Intent(LessonDetailActivity.this, GuideActivity.class);
+
                 startActivity(guideIntent);
                 break;
             case R.id.btnListening:
-                Toast.makeText(this, "open activity listening", Toast.LENGTH_SHORT).show();
+                Intent listeningIntent = new Intent(LessonDetailActivity.this, ListeningActivity.class);
+                startActivity(listeningIntent);
                 break;
             case R.id.btnSpeaking:
-                Toast.makeText(this, "open activity speaking", Toast.LENGTH_SHORT).show();
+                Intent speakingIntent = new Intent(LessonDetailActivity.this, SpeakingActivity.class);
+                startActivity(speakingIntent);
                 break;
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

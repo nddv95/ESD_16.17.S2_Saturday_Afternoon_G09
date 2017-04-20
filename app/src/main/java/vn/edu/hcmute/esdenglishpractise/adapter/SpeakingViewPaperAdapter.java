@@ -11,14 +11,14 @@ import android.text.SpannableString;
 import android.text.style.ImageSpan;
 
 import vn.edu.hcmute.esdenglishpractise.R;
-import vn.edu.hcmute.esdenglishpractise.fragment.Tab1Fragment;
-import vn.edu.hcmute.esdenglishpractise.fragment.Tab2Fragment;
+import vn.edu.hcmute.esdenglishpractise.fragment.Speaking1Fragment;
+import vn.edu.hcmute.esdenglishpractise.fragment.Speaking2Fragment;
 
 /**
- * Created by nddv9 on 19/04/2017.
+ * Created by nddv9 on 20/04/2017.
  */
 
-public class ViewPagerAdapter extends FragmentStatePagerAdapter {
+public class SpeakingViewPaperAdapter extends FragmentStatePagerAdapter {
     private Context mContext;
     private String tabTitles[];
     private int[] imageResId = {
@@ -26,7 +26,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             R.drawable.ic_tab_2
     };
 
-    public ViewPagerAdapter(FragmentManager fm, Context context, String[] tabTitles) {
+    public SpeakingViewPaperAdapter(FragmentManager fm, Context context, String[] tabTitles) {
         super(fm);
         this.mContext = context;
         this.tabTitles = tabTitles;
@@ -35,8 +35,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0)
-            return Tab1Fragment.newInstance(0);
-        return Tab2Fragment.newInstance(1);
+            return new Speaking1Fragment();
+        return new Speaking2Fragment();
     }
 
     @Override

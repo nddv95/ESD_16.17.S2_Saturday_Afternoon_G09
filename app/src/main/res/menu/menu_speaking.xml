@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="vn.edu.hcmute.esdenglishpractise.acitivity.SpeakingActivity">
+    <item
+        android:id="@+id/action_practice"
+        android:icon="@mipmap/ic_voice"
+        android:orderInCategory="200"
+        android:title="Practice"
+        app:showAsAction="ifRoom" />
+</menu>

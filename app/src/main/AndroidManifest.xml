@@ -30,6 +30,18 @@
         <activity
             android:name=".acitivity.GuideActivity"
             android:label="@string/title_activity_guide"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".acitivity.YoutubeActivity"
+            android:label="@string/title_activity_youtube"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".acitivity.ListeningActivity"
+            android:label="@string/title_activity_listening"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".acitivity.SpeakingActivity"
+            android:label="@string/title_activity_speaking"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

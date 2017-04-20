@@ -3,11 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFEBEE"
-    tools:context="vn.edu.hcmute.esdenglishpractise.fragment.Tab1Fragment">
+    tools:context="vn.edu.hcmute.esdenglishpractise.fragment.Tab2Fragment">
 
     <ImageView
-        android:id="@+id/imgGuide1"
+        android:id="@+id/imgGuide2"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginLeft="8dp"
@@ -18,16 +17,16 @@
         android:src="@drawable/bg_side_nav_bar" />
 
     <LinearLayout
-        android:id="@+id/action1"
+        android:id="@+id/action2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imgGuide1"
+        android:layout_below="@id/imgGuide2"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:weightSum="1.0">
 
         <mehdi.sakout.fancybuttons.FancyButton
-            android:id="@+id/btnPlaySound1"
+            android:id="@+id/btnPlaySound2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -43,7 +42,7 @@
             fancy:fb_textSize="18sp" />
 
         <mehdi.sakout.fancybuttons.FancyButton
-            android:id="@+id/btnOpenVideo1"
+            android:id="@+id/btnOpenVideo2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
@@ -60,14 +59,14 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/layout_guide1"
+        android:id="@+id/layout_guide2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/action1"
+        android:layout_below="@id/action2"
         android:layout_margin="8dp">
 
         <TextView
-            android:id="@+id/tvGuideText1"
+            android:id="@+id/tvGuideText2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
@@ -81,13 +80,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_guide1"
+        android:layout_below="@id/layout_guide2"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:weightSum="1.0">
 
         <mehdi.sakout.fancybuttons.FancyButton
-            android:id="@+id/btnOpenListening1"
+            android:id="@+id/btnOpenListening2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
@@ -107,7 +106,7 @@
             fancy:fb_textSize="24sp" />
 
         <mehdi.sakout.fancybuttons.FancyButton
-            android:id="@+id/btnOpenSpeaking1"
+            android:id="@+id/btnOpenSpeaking2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
@@ -126,6 +125,5 @@
             fancy:fb_textColor="#FFFFFF"
             fancy:fb_textSize="24sp" />
     </LinearLayout>
-
 
 </RelativeLayout>

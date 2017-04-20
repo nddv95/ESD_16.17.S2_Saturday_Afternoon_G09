@@ -8,5 +8,8 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_lesson_detail">LESSON CONTENT</string>
-    <string name="title_activity_guide">GUIDE</string>
+    <string name="title_activity_guide">Learning</string>
+    <string name="title_activity_youtube">Video guide</string>
+    <string name="title_activity_listening">Listening</string>
+    <string name="title_activity_speaking">Speaking</string>
 </resources>
