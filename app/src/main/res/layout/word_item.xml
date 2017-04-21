@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="8dp">
+
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btnOpenPractice"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="right"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        fancy:fb_defaultColor="@android:color/transparent"
+        fancy:fb_focusColor="#9bd823"
+        fancy:fb_fontIconResource="&#xf130;"
+        fancy:fb_fontIconSize="30sp"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="5dp"
+        fancy:fb_text=""
+        fancy:fb_textColor="@color/colorPrimary"
+        fancy:fb_textSize="14sp" />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btnSoundWord"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="right"
+        android:layout_margin="5dp"
+        android:layout_toLeftOf="@+id/btnOpenPractice"
+        android:padding="5dp"
+        fancy:fb_defaultColor="@android:color/transparent"
+        fancy:fb_focusColor="#9bd823"
+        fancy:fb_fontIconResource="&#xf028;"
+        fancy:fb_fontIconSize="30sp"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="5dp"
+        fancy:fb_text=""
+        fancy:fb_textColor="#1976d2"
+        fancy:fb_textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvWord"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btnSoundWord"
+        android:gravity="center"
+        android:text="ship"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvPronoun"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignTop="@+id/tvWord"
+        android:layout_marginLeft="16dp"
+        android:layout_toEndOf="@+id/tvWord"
+        android:layout_toRightOf="@+id/tvWord"
+        android:gravity="center"
+        android:text="/ship/"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="#486faf" />
+
+    <TextView
+        android:id="@+id/tvMean"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvWord"
+        android:gravity="center"
+        android:text="Tau"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+</RelativeLayout>

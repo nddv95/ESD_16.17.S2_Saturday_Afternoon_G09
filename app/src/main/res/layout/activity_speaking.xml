@@ -26,16 +26,16 @@
                 android:layout_gravity="right"
                 android:layout_margin="5dp"
                 android:padding="5dp"
-                fancy:fb_borderColor="#FFFFFF"
-                fancy:fb_borderWidth="2dp"
-                fancy:fb_defaultColor="@color/colorPrimary"
+                fancy:fb_borderColor="#039be5"
+                fancy:fb_borderWidth="1dp"
+                fancy:fb_defaultColor="#eeff41"
                 fancy:fb_focusColor="#9bd823"
                 fancy:fb_fontIconResource="&#xf130;"
                 fancy:fb_fontIconSize="14sp"
                 fancy:fb_iconPosition="left"
                 fancy:fb_radius="5dp"
                 fancy:fb_text="Practice"
-                fancy:fb_textColor="#FFFFFF"
+                fancy:fb_textColor="#212121"
                 fancy:fb_textSize="14sp" />
 
             <mehdi.sakout.fancybuttons.FancyButton
@@ -45,16 +45,16 @@
                 android:layout_gravity="right"
                 android:layout_margin="5dp"
                 android:padding="5dp"
-                fancy:fb_borderColor="#FFFFFF"
-                fancy:fb_borderWidth="2dp"
-                fancy:fb_defaultColor="@color/colorPrimary"
+                fancy:fb_borderColor="#039be5"
+                fancy:fb_borderWidth="1dp"
+                fancy:fb_defaultColor="#eeff41"
                 fancy:fb_focusColor="#9bd823"
                 fancy:fb_fontIconResource="&#xf16a;"
                 fancy:fb_fontIconSize="14sp"
                 fancy:fb_iconPosition="left"
                 fancy:fb_radius="5dp"
                 fancy:fb_text="Guide"
-                fancy:fb_textColor="#FFFFFF"
+                fancy:fb_textColor="#212121"
                 fancy:fb_textSize="14sp" />
         </android.support.v7.widget.Toolbar>
         >
