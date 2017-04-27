@@ -42,6 +42,10 @@
         <activity
             android:name=".acitivity.SpeakingActivity"
             android:label="@string/title_activity_speaking"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".acitivity.SpeakingPracticeActivity"
+            android:label="@string/title_activity_speaking_practice"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

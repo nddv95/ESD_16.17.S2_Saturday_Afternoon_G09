@@ -20,7 +20,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <mehdi.sakout.fancybuttons.FancyButton
-                android:id="@+id/btnOpenGuide"
+                android:id="@+id/btnOpenSpeakingPractice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -39,7 +39,7 @@
                 fancy:fb_textSize="14sp" />
 
             <mehdi.sakout.fancybuttons.FancyButton
-                android:id="@+id/btnOpenSpeakingPractice"
+                android:id="@+id/btnOpenGuide"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"

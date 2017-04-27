@@ -12,4 +12,5 @@
     <string name="title_activity_youtube">Video guide</string>
     <string name="title_activity_listening">Listening</string>
     <string name="title_activity_speaking">Speaking</string>
+    <string name="title_activity_speaking_practice">Speaking practice</string>
 </resources>

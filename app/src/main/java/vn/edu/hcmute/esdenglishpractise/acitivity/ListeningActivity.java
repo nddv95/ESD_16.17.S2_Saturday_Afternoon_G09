@@ -34,10 +34,10 @@ public class ListeningActivity extends AppCompatActivity implements View.OnClick
 
         mTvQuestion = (TextView) findViewById(R.id.tvQuestion);
         mTvPoint = (TextView) findViewById(R.id.tvPoint);
-        mTvKey = (TextView) findViewById(R.id.tvAnswer);
+        mTvKey = (TextView) findViewById(R.id.tvWordSpeak);
         mTvGuide = (TextView) findViewById(R.id.tvDescription);
 
-        mBtnQuestion = (FancyButton) findViewById(R.id.btnKey);
+        mBtnQuestion = (FancyButton) findViewById(R.id.btnSoundSpeak);
         mBtnQuestion.setOnClickListener(this);
         mBtnAnswer1 = (FancyButton) findViewById(R.id.btnAnswer1);
         mBtnAnswer1.setOnClickListener(this);
@@ -45,14 +45,14 @@ public class ListeningActivity extends AppCompatActivity implements View.OnClick
         mBtnAnswer2.setOnClickListener(this);
         mBtnAnswer3 = (FancyButton) findViewById(R.id.btnAnswer3);
         mBtnAnswer3.setOnClickListener(this);
-        mBtnCheck = (FancyButton) findViewById(R.id.btnAction);
+        mBtnCheck = (FancyButton) findViewById(R.id.btnPre);
         mBtnCheck.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnKey:
+            case R.id.btnSoundSpeak:
                 //play sound
                 break;
             case R.id.btnAnswer1:
@@ -61,7 +61,7 @@ public class ListeningActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.btnAnswer3:
                 break;
-            case R.id.btnAction:
+            case R.id.btnPre:
                 break;
         }
     }

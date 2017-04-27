@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <mehdi.sakout.fancybuttons.FancyButton
-        android:id="@+id/btnAction"
+        android:id="@+id/btnPre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -43,7 +43,7 @@
         fancy:fb_iconPosition="left"
         fancy:fb_radius="5dp"
         fancy:fb_text="CHECK"
-        fancy:fb_textColor="@android:color/black"
+        fancy:fb_textColor="@color/colorPrimaryText"
         fancy:fb_textSize="24sp" />
 
     <mehdi.sakout.fancybuttons.FancyButton
@@ -61,7 +61,7 @@
         fancy:fb_focusColor="#9bd823"
         fancy:fb_radius="5dp"
         fancy:fb_text="ship"
-        fancy:fb_textColor="@android:color/black"
+        fancy:fb_textColor="@color/colorPrimaryText"
         fancy:fb_textSize="24sp" />
 
     <mehdi.sakout.fancybuttons.FancyButton
@@ -73,7 +73,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
         android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAction"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPre"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -82,11 +82,11 @@
         fancy:fb_focusColor="#9bd823"
         fancy:fb_radius="5dp"
         fancy:fb_text="sheep"
-        fancy:fb_textColor="@android:color/black"
+        fancy:fb_textColor="@color/colorPrimaryText"
         fancy:fb_textSize="24sp" />
 
     <mehdi.sakout.fancybuttons.FancyButton
-        android:id="@+id/btnKey"
+        android:id="@+id/btnSoundSpeak"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginLeft="8dp"
@@ -106,7 +106,7 @@
         fancy:fb_textColor="#1976d2" />
 
     <TextView
-        android:id="@+id/tvAnswer"
+        android:id="@+id/tvWordSpeak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -118,7 +118,7 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnKey" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSoundSpeak" />
 
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/btnAnswer2"
@@ -135,7 +135,7 @@
         fancy:fb_focusColor="#9bd823"
         fancy:fb_radius="5dp"
         fancy:fb_text="share"
-        fancy:fb_textColor="@android:color/black"
+        fancy:fb_textColor="@color/colorPrimaryText"
         fancy:fb_textSize="24sp" />
 
     <TextView

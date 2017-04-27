@@ -1,5 +1,6 @@
 package vn.edu.hcmute.esdenglishpractise.acitivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -7,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import mehdi.sakout.fancybuttons.FancyButton;
 import vn.edu.hcmute.esdenglishpractise.R;
 import vn.edu.hcmute.esdenglishpractise.adapter.SpeakingViewPaperAdapter;
 
@@ -15,6 +17,7 @@ public class SpeakingActivity extends AppCompatActivity {
     TabLayout mTabSpeaking;
     Toolbar toolbar;
     ViewPager mViewPagerSpeaking;
+    FancyButton mBtnGuide, mBtnPractice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,26 @@ public class SpeakingActivity extends AppCompatActivity {
 
         mTabSpeaking = (TabLayout) findViewById(R.id.tabSpeaking);
         mTabSpeaking.setupWithViewPager(mViewPagerSpeaking);
+
+        mBtnGuide = (FancyButton) findViewById(R.id.btnOpenGuide);
+        mBtnGuide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent guideIntent = new Intent(SpeakingActivity.this, GuideActivity.class);
+                //put lesson id
+                startActivity(guideIntent);
+            }
+        });
+        mBtnPractice = (FancyButton) findViewById(R.id.btnOpenSpeakingPractice);
+        mBtnPractice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent praticeIntent = new Intent(SpeakingActivity.this, SpeakingPracticeActivity.class);
+                //put lesson id
+                //put word id
+                startActivity(praticeIntent);
+            }
+        });
     }
 
     /*
