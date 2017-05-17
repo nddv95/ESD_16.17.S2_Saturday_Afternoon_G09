@@ -1,5 +1,6 @@
 package vn.edu.hcmute.esdenglishpractise.acitivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import vn.edu.hcmute.esdenglishpractise.Model.Lesson;
 import vn.edu.hcmute.esdenglishpractise.R;
 import vn.edu.hcmute.esdenglishpractise.adapter.ViewPagerAdapter;
 
@@ -17,6 +19,7 @@ public class GuideActivity extends AppCompatActivity {
     TabLayout mTabGuide;
     Toolbar toolbar;
     ViewPager mViewPagerGuide;
+    long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +38,12 @@ public class GuideActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        Intent intent = getIntent();
+        id = intent.getLongExtra("id", -1);
+        Lesson lesson = Lesson.findById(Lesson.class, id);
 
-        String titles[] = new String[]{"/u/", "/u:/"};
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), this, titles);
+        String titles[] = new String[]{lesson.sound1.sound, lesson.sound2.sound};
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), this, titles, lesson.getId());
         mViewPagerGuide = (ViewPager) findViewById(R.id.viewPaperGuide);
         mViewPagerGuide.setAdapter(adapter);
 

@@ -6,9 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import vn.edu.hcmute.esdenglishpractise.Model.Word;
@@ -21,10 +20,10 @@ import vn.edu.hcmute.esdenglishpractise.util.Utils;
 
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
-    private ArrayList<Word> wordArrayList;
+    private List<Word> wordArrayList;
     private Context mContext;
 
-    public WordAdapter(Context context, ArrayList<Word> words) {
+    public WordAdapter(Context context, List<Word> words) {
         this.mContext = context;
         this.wordArrayList = words;
     }
@@ -39,13 +38,13 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Word word = wordArrayList.get(position);
-        holder.mTvWord.setText(word.getWord());
-        holder.mTvPronoun.setText(word.getPronoun());
-        holder.mTvMean.setText(word.getMean());
+        holder.mTvWord.setText(word.word);
+        holder.mTvPronoun.setText(word.pro);
+        holder.mTvMean.setText(word.mean);
         holder.mBtnOpenPractice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getmContext(), word.getWord(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getmContext(), word.getWord(), Toast.LENGTH_SHORT).show();
             }
         });
 

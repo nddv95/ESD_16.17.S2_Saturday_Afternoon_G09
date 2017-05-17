@@ -9,10 +9,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.io.IOException;
+
 import vn.edu.hcmute.esdenglishpractise.R;
+import vn.edu.hcmute.esdenglishpractise.database.DatabaseHelper;
 import vn.edu.hcmute.esdenglishpractise.fragment.AboutFragment;
 import vn.edu.hcmute.esdenglishpractise.fragment.CustomSpeakingFragment;
 import vn.edu.hcmute.esdenglishpractise.fragment.HomeFragment;
@@ -20,9 +24,11 @@ import vn.edu.hcmute.esdenglishpractise.fragment.SettingFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = MainActivity.class.getSimpleName();
     Toolbar toolbar = null;
     DrawerLayout drawer = null;
     NavigationView navigationView = null;
+    DatabaseHelper databaseHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,13 @@ public class MainActivity extends AppCompatActivity
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        databaseHelper = new DatabaseHelper(this);
+        try {
+            databaseHelper.CreateDatabase();
+        } catch (IOException e) {
+            Log.d(TAG, "Fail to load database");
+        }
     }
 
     @Override

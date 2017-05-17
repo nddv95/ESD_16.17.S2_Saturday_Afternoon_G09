@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import mehdi.sakout.fancybuttons.FancyButton;
+import vn.edu.hcmute.esdenglishpractise.Model.Lesson;
 import vn.edu.hcmute.esdenglishpractise.R;
 import vn.edu.hcmute.esdenglishpractise.adapter.SpeakingViewPaperAdapter;
 
@@ -17,7 +17,7 @@ public class SpeakingActivity extends AppCompatActivity {
     TabLayout mTabSpeaking;
     Toolbar toolbar;
     ViewPager mViewPagerSpeaking;
-    FancyButton mBtnGuide, mBtnPractice;
+    long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,33 +37,18 @@ public class SpeakingActivity extends AppCompatActivity {
             }
         });
 
-        String titles[] = new String[]{"/u/", "/u:/"};
-        SpeakingViewPaperAdapter adapter = new SpeakingViewPaperAdapter(getSupportFragmentManager(), this, titles);
+        Intent intent = getIntent();
+        id = intent.getLongExtra("id", -1);
+        Lesson lesson = Lesson.findById(Lesson.class, id);
+
+        String titles[] = new String[]{lesson.sound1.sound, lesson.sound2.sound};
+        SpeakingViewPaperAdapter adapter = new SpeakingViewPaperAdapter(getSupportFragmentManager(), this, titles, id);
         mViewPagerSpeaking = (ViewPager) findViewById(R.id.viewPaperSpeaking);
         mViewPagerSpeaking.setAdapter(adapter);
 
         mTabSpeaking = (TabLayout) findViewById(R.id.tabSpeaking);
         mTabSpeaking.setupWithViewPager(mViewPagerSpeaking);
 
-        mBtnGuide = (FancyButton) findViewById(R.id.btnOpenGuide);
-        mBtnGuide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent guideIntent = new Intent(SpeakingActivity.this, GuideActivity.class);
-                //put lesson id
-                startActivity(guideIntent);
-            }
-        });
-        mBtnPractice = (FancyButton) findViewById(R.id.btnOpenSpeakingPractice);
-        mBtnPractice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent praticeIntent = new Intent(SpeakingActivity.this, SpeakingPracticeActivity.class);
-                //put lesson id
-                //put word id
-                startActivity(praticeIntent);
-            }
-        });
     }
 
     /*

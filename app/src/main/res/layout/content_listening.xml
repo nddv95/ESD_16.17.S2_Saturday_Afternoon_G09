@@ -38,7 +38,6 @@
         app:layout_constraintRight_toRightOf="parent"
         fancy:fb_defaultColor="@android:color/white"
         fancy:fb_focusColor="#9bd823"
-        fancy:fb_fontIconResource="&#xf0ca;"
         fancy:fb_fontIconSize="24sp"
         fancy:fb_iconPosition="left"
         fancy:fb_radius="5dp"

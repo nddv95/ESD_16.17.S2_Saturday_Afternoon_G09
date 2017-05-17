@@ -8,18 +8,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
+import vn.edu.hcmute.esdenglishpractise.Model.Sound;
 import vn.edu.hcmute.esdenglishpractise.R;
 
 public class YoutubeActivity extends AppCompatActivity {
 
     private static final String API_KEY = "AIzaSyBlV71FnSEyyRZnmtHLpm9jnrRRPR4sjME";
-    private int lessonId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,12 @@ public class YoutubeActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        lessonId = intent.getIntExtra("lessonId", 0);
-        Toast.makeText(this, "" + lessonId, Toast.LENGTH_SHORT).show();
+        final Long soundId = intent.getLongExtra("soundId", -1);
+
+        final Sound sound = Sound.findById(Sound.class, soundId);
+
+        TextView tvGuide = (TextView) findViewById(R.id.tvYoutube);
+        tvGuide.setText(sound.text);
 
         YouTubePlayerSupportFragment youtubePlayer = new YouTubePlayerSupportFragment().newInstance();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -52,7 +57,7 @@ public class YoutubeActivity extends AppCompatActivity {
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 if (!b) {
                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
-                    youTubePlayer.loadVideo("srH-2pQdKhg");
+                    youTubePlayer.loadVideo(sound.youtubeid);
                     youTubePlayer.play();
                 }
             }

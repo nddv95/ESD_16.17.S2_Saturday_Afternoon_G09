@@ -9,10 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import mehdi.sakout.fancybuttons.FancyButton;
+import vn.edu.hcmute.esdenglishpractise.Model.Lesson;
 import vn.edu.hcmute.esdenglishpractise.R;
+import vn.edu.hcmute.esdenglishpractise.util.Utils;
 
 public class LessonDetailActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,6 +22,8 @@ public class LessonDetailActivity extends AppCompatActivity implements View.OnCl
     FancyButton mSpeakingButton;
     ImageView mImageLesson;
     TextView mTvLessonTitle;
+    long id;
+    private Lesson lesson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +44,13 @@ public class LessonDetailActivity extends AppCompatActivity implements View.OnCl
         });
 
         Intent intent = getIntent();
-        Toast.makeText(this, intent.getIntExtra("position", 0) + "adada", Toast.LENGTH_SHORT).show();
-
+        id = intent.getLongExtra("position", -1);
+        mTvLessonTitle = (TextView) findViewById(R.id.tvLessonDetailTitle);
+        if (id > 0) {
+            lesson = Lesson.findById(Lesson.class, id);
+            mTvLessonTitle.setText(lesson.name.toUpperCase() + ": "
+                    + lesson.sound1.sound + " vs " + lesson.sound2.sound);
+        }
         mGuideButton = (FancyButton) findViewById(R.id.btnGuide);
         mGuideButton.setOnClickListener(this);
         mListeningButton = (FancyButton) findViewById(R.id.btnListening);
@@ -50,7 +58,8 @@ public class LessonDetailActivity extends AppCompatActivity implements View.OnCl
         mSpeakingButton = (FancyButton) findViewById(R.id.btnSpeaking);
         mSpeakingButton.setOnClickListener(this);
         mImageLesson = (ImageView) findViewById(R.id.imgLessonDetail);
-        mTvLessonTitle = (TextView) findViewById(R.id.tvLessonDetailTitle);
+        mImageLesson.setImageBitmap(Utils.LoadImageFromAssert(this, lesson.img));
+
 
     }
 
@@ -59,15 +68,17 @@ public class LessonDetailActivity extends AppCompatActivity implements View.OnCl
         switch (v.getId()) {
             case R.id.btnGuide:
                 Intent guideIntent = new Intent(LessonDetailActivity.this, GuideActivity.class);
-
+                guideIntent.putExtra("id", id);
                 startActivity(guideIntent);
                 break;
             case R.id.btnListening:
                 Intent listeningIntent = new Intent(LessonDetailActivity.this, ListeningActivity.class);
+                listeningIntent.putExtra("id", id);
                 startActivity(listeningIntent);
                 break;
             case R.id.btnSpeaking:
                 Intent speakingIntent = new Intent(LessonDetailActivity.this, SpeakingActivity.class);
+                speakingIntent.putExtra("id", id);
                 startActivity(speakingIntent);
                 break;
         }

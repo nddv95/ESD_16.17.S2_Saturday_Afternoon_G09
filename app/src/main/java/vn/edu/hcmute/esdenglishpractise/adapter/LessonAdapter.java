@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import vn.edu.hcmute.esdenglishpractise.Model.Lesson;
 import vn.edu.hcmute.esdenglishpractise.R;
 import vn.edu.hcmute.esdenglishpractise.acitivity.LessonDetailActivity;
+import vn.edu.hcmute.esdenglishpractise.util.Utils;
 
 /**
  * Created by nddv9 on 18/04/2017.
@@ -42,8 +43,9 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     @Override
     public void onBindViewHolder(LessonAdapter.ViewHolder holder, int position) {
         Lesson lesson = myLessons.get(position);
-        holder.mLessonTitle.setText(lesson.getLessonName());
-        holder.mLessonDescription.setText(lesson.getDescription());
+        holder.mImageLesson.setImageBitmap(Utils.LoadImageFromAssert(mContext, lesson.img));
+        holder.mLessonTitle.setText(lesson.name);
+        holder.mLessonDescription.setText(lesson.sound1.sound + " vs " + lesson.sound2.sound);
     }
 
     @Override

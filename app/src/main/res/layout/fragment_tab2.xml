@@ -81,65 +81,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/white"
-                    android:maxLines="10"
+                    android:lineSpacingExtra="5dp"
+                    android:maxLines="20"
                     android:padding="8dp"
                     android:text="This is \n - name \n - gender"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="18sp" />
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textSize="15sp" />
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/layout_action2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:weightSum="1.0">
-
-        <mehdi.sakout.fancybuttons.FancyButton
-            android:id="@+id/btnOpenListening2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="2dp"
-            android:layout_weight="0.5"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:text="Listening"
-            fancy:fb_borderColor="#FFFFFF"
-            fancy:fb_borderWidth="1dp"
-            fancy:fb_defaultColor="@color/colorPrimaryButton"
-            fancy:fb_focusColor="#9bd823"
-            fancy:fb_fontIconResource="&#xf11b;"
-            fancy:fb_fontIconSize="24sp"
-            fancy:fb_iconPosition="left"
-            fancy:fb_radius="5dp"
-            fancy:fb_textColor="#FFFFFF"
-            fancy:fb_textSize="24sp" />
-
-        <mehdi.sakout.fancybuttons.FancyButton
-            android:id="@+id/btnOpenSpeaking2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_weight="0.5"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:text="Speaking"
-            fancy:fb_borderColor="#FFFFFF"
-            fancy:fb_borderWidth="1dp"
-            fancy:fb_defaultColor="@color/colorPrimaryButton"
-            fancy:fb_focusColor="#9bd823"
-            fancy:fb_fontIconResource="&#xf130;"
-            fancy:fb_fontIconSize="24sp"
-            fancy:fb_iconPosition="left"
-            fancy:fb_radius="5dp"
-            fancy:fb_textColor="#FFFFFF"
-            fancy:fb_textSize="24sp" />
-    </LinearLayout>
 
 </RelativeLayout>

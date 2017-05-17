@@ -10,6 +10,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
 
+import vn.edu.hcmute.esdenglishpractise.Model.Lesson;
 import vn.edu.hcmute.esdenglishpractise.R;
 import vn.edu.hcmute.esdenglishpractise.fragment.Tab1Fragment;
 import vn.edu.hcmute.esdenglishpractise.fragment.Tab2Fragment;
@@ -25,18 +26,20 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             R.drawable.ic_tab_1,
             R.drawable.ic_tab_2
     };
+    private long lessonId;
 
-    public ViewPagerAdapter(FragmentManager fm, Context context, String[] tabTitles) {
+    public ViewPagerAdapter(FragmentManager fm, Context context, String[] tabTitles, Long lessonId) {
         super(fm);
         this.mContext = context;
         this.tabTitles = tabTitles;
+        this.lessonId = lessonId;
     }
 
     @Override
     public Fragment getItem(int position) {
         if (position == 0)
-            return Tab1Fragment.newInstance(0);
-        return Tab2Fragment.newInstance(1);
+            return Tab1Fragment.newInstance(Lesson.findById(Lesson.class, lessonId).sound1.getId());
+        return Tab2Fragment.newInstance(Lesson.findById(Lesson.class, lessonId).sound2.getId());
     }
 
     @Override

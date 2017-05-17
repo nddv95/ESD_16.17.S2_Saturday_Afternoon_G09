@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import vn.edu.hcmute.esdenglishpractise.Model.Word;
 import vn.edu.hcmute.esdenglishpractise.R;
@@ -20,7 +21,8 @@ import vn.edu.hcmute.esdenglishpractise.adapter.WordAdapter;
  */
 public class Speaking1Fragment extends Fragment {
 
-    private ArrayList<Word> wordArrayList = new ArrayList<>();
+    long soundId;
+    private List<Word> wordArrayList = new ArrayList<>();
 
     public Speaking1Fragment() {
     }
@@ -28,16 +30,10 @@ public class Speaking1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        wordArrayList.add(new Word(1, "ship", "null", "Tau", "/ship/", 3));
-        wordArrayList.add(new Word(1, "ship", "null", "Tau", "/ship/", 1));
-        wordArrayList.add(new Word(1, "ship", "null", "Tau", "/ship/", 5));
-        wordArrayList.add(new Word(1, "ship", "null", "Tau", "/ship/", 2));
-        wordArrayList.add(new Word(1, "ship", "null", "Tau", "/ship/", 3));
-        wordArrayList.add(new Word(1, "ship", "null", "Tau", "/ship/", 3));
-        wordArrayList.add(new Word(1, "ship", "null", "Tau", "/ship/", 3));
-        wordArrayList.add(new Word(1, "ship", "null", "Tau", "/ship/", 3));
-        wordArrayList.add(new Word(1, "ship", "null", "Tau", "/ship/", 3));
 
+        if (getArguments() != null)
+            soundId = getArguments().getLong("soundId");
+        wordArrayList = Word.find(Word.class, "sound = ?", String.valueOf(soundId));
         View rootView = inflater.inflate(R.layout.fragment_speaking1, container, false);
 
         RecyclerView rcvWord = (RecyclerView) rootView.findViewById(R.id.rcvListWord1);

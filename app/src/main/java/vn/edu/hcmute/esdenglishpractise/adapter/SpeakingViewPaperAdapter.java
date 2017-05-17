@@ -2,6 +2,7 @@ package vn.edu.hcmute.esdenglishpractise.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -10,6 +11,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
 
+import vn.edu.hcmute.esdenglishpractise.Model.Lesson;
 import vn.edu.hcmute.esdenglishpractise.R;
 import vn.edu.hcmute.esdenglishpractise.fragment.Speaking1Fragment;
 import vn.edu.hcmute.esdenglishpractise.fragment.Speaking2Fragment;
@@ -26,17 +28,31 @@ public class SpeakingViewPaperAdapter extends FragmentStatePagerAdapter {
             R.drawable.ic_tab_2
     };
 
-    public SpeakingViewPaperAdapter(FragmentManager fm, Context context, String[] tabTitles) {
+    private long lessonId;
+    private Lesson lesson;
+
+    public SpeakingViewPaperAdapter(FragmentManager fm, Context context, String[] tabTitles, long id) {
         super(fm);
         this.mContext = context;
         this.tabTitles = tabTitles;
+        this.lessonId = id;
+        lesson = Lesson.findById(Lesson.class, lessonId);
     }
 
     @Override
     public Fragment getItem(int position) {
-        if (position == 0)
-            return new Speaking1Fragment();
-        return new Speaking2Fragment();
+        if (position == 0) {
+            Speaking1Fragment fragment = new Speaking1Fragment();
+            Bundle bundle = new Bundle();
+            bundle.putLong("soundId", lesson.sound1.getId());
+            fragment.setArguments(bundle);
+            return fragment;
+        }
+        Speaking2Fragment fragment = new Speaking2Fragment();
+        Bundle bundle = new Bundle();
+        bundle.putLong("soundId", lesson.sound2.getId());
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
