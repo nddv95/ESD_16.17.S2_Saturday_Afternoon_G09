@@ -23,6 +23,7 @@ public class Speaking1Fragment extends Fragment {
 
     long soundId;
     private List<Word> wordArrayList = new ArrayList<>();
+    private RecyclerView rcvWord;
 
     public Speaking1Fragment() {
     }
@@ -36,7 +37,7 @@ public class Speaking1Fragment extends Fragment {
         wordArrayList = Word.find(Word.class, "sound = ?", String.valueOf(soundId));
         View rootView = inflater.inflate(R.layout.fragment_speaking1, container, false);
 
-        RecyclerView rcvWord = (RecyclerView) rootView.findViewById(R.id.rcvListWord1);
+        rcvWord = (RecyclerView) rootView.findViewById(R.id.rcvListWord1);
         rcvWord.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcvWord.setLayoutManager(layoutManager);
@@ -46,5 +47,13 @@ public class Speaking1Fragment extends Fragment {
         WordAdapter wordAdapter = new WordAdapter(getActivity(), wordArrayList);
         rcvWord.setAdapter(wordAdapter);
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        wordArrayList = Word.find(Word.class, "sound = ?", String.valueOf(soundId));
+        WordAdapter wordAdapter = new WordAdapter(getActivity(), wordArrayList);
+        rcvWord.setAdapter(wordAdapter);
     }
 }

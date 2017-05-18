@@ -13,4 +13,5 @@
     <string name="title_activity_listening">Listening</string>
     <string name="title_activity_speaking">Speaking</string>
     <string name="title_activity_speaking_practice">Speaking practice</string>
+    <string name="string_hint_speaking">Click button to speak word above</string>
 </resources>

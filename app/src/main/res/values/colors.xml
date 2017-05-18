@@ -11,6 +11,7 @@
     <color name="colorPrimaryButton">#03A9F4</color>
     <color name="colorButtonFocus">#9bd823</color>
     <color name="colorButtonDefault">#FFFFFF</color>
+    <color name="colorStar">#FFC107</color>
 
 
 </resources>

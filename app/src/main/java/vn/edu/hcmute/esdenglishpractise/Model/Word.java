@@ -12,9 +12,9 @@ public class Word extends SugarRecord {
     public String pro;
     public String mean;
     public Sound sound;
-    public String star;
+    public int star;
 
-    public Word(String word, String audio, String pro, String mean, Sound sound, String star) {
+    public Word(String word, String audio, String pro, String mean, Sound sound, int star) {
         this.word = word;
         this.audio = audio;
         this.pro = pro;

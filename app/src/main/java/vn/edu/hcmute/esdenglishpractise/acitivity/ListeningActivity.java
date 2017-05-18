@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +15,7 @@ import java.util.Random;
 import mehdi.sakout.fancybuttons.FancyButton;
 import vn.edu.hcmute.esdenglishpractise.Model.Listening;
 import vn.edu.hcmute.esdenglishpractise.R;
+import vn.edu.hcmute.esdenglishpractise.util.Utils;
 
 public class ListeningActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +29,7 @@ public class ListeningActivity extends AppCompatActivity implements View.OnClick
     int point = 0;
     int indexQuestion = 0;
     long lessonId;
+    boolean canPlay = false;
     private List<Listening> lstListeningTest = new ArrayList<>();
 
     private static int randomInt(int range) {
@@ -87,60 +88,109 @@ public class ListeningActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
+        Listening lst = lstListeningTest.get(indexQuestion);
         switch (v.getId()) {
             case R.id.btnSoundSpeak:
                 //play sound
+                Utils.PlaySoundFromAssert(this, lst.key.audio);
                 break;
             case R.id.btnAnswer1:
-                choiceAnswer1 = true;
-                choiceAnswer2 = false;
-                choiceAnswer3 = false;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    mBtnAnswer1.setBackgroundColor(getColor(R.color.colorAccent));
-                    mBtnAnswer2.setBackgroundColor(getColor(R.color.colorButtonDefault));
-                    mBtnAnswer3.setBackgroundColor(getColor(R.color.colorButtonDefault));
+                if (canPlay) {
+                    switch (keyIndex) {
+                        case 0:
+                            Utils.PlaySoundFromAssert(this, lst.key.audio);
+                            break;
+                        case 1:
+                            Utils.PlaySoundFromAssert(this, lst.word1.audio);
+                            break;
+                        case 2:
+                            Utils.PlaySoundFromAssert(this, lst.word2.audio);
+                            break;
+                    }
                 } else {
-                    mBtnAnswer1.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    mBtnAnswer2.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
-                    mBtnAnswer3.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
+                    choiceAnswer1 = true;
+                    choiceAnswer2 = false;
+                    choiceAnswer3 = false;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        mBtnAnswer1.setBackgroundColor(getColor(R.color.colorAccent));
+                        mBtnAnswer2.setBackgroundColor(getColor(R.color.colorButtonDefault));
+                        mBtnAnswer3.setBackgroundColor(getColor(R.color.colorButtonDefault));
+                    } else {
+                        mBtnAnswer1.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                        mBtnAnswer2.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
+                        mBtnAnswer3.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
+                    }
                 }
+
                 break;
             case R.id.btnAnswer2:
-                choiceAnswer1 = false;
-                choiceAnswer2 = true;
-                choiceAnswer3 = false;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    mBtnAnswer1.setBackgroundColor(getColor(R.color.colorButtonDefault));
-                    mBtnAnswer2.setBackgroundColor(getColor(R.color.colorAccent));
-                    mBtnAnswer3.setBackgroundColor(getColor(R.color.colorButtonDefault));
+                if (canPlay) {
+                    switch (keyIndex) {
+                        case 0:
+                            Utils.PlaySoundFromAssert(this, lst.word1.audio);
+                            break;
+                        case 1:
+                            Utils.PlaySoundFromAssert(this, lst.key.audio);
+                            break;
+                        case 2:
+                            Utils.PlaySoundFromAssert(this, lst.word1.audio);
+                            break;
+                    }
                 } else {
-                    mBtnAnswer1.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
-                    mBtnAnswer2.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                    mBtnAnswer3.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
+                    choiceAnswer1 = false;
+                    choiceAnswer2 = true;
+                    choiceAnswer3 = false;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        mBtnAnswer1.setBackgroundColor(getColor(R.color.colorButtonDefault));
+                        mBtnAnswer2.setBackgroundColor(getColor(R.color.colorAccent));
+                        mBtnAnswer3.setBackgroundColor(getColor(R.color.colorButtonDefault));
+                    } else {
+                        mBtnAnswer1.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
+                        mBtnAnswer2.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                        mBtnAnswer3.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
+                    }
                 }
+
                 break;
             case R.id.btnAnswer3:
-                choiceAnswer1 = false;
-                choiceAnswer2 = false;
-                choiceAnswer3 = true;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    mBtnAnswer1.setBackgroundColor(getColor(R.color.colorButtonDefault));
-                    mBtnAnswer2.setBackgroundColor(getColor(R.color.colorButtonDefault));
-                    mBtnAnswer3.setBackgroundColor(getColor(R.color.colorAccent));
+                if (canPlay) {
+                    switch (keyIndex) {
+                        case 0:
+                            Utils.PlaySoundFromAssert(this, lst.word2.audio);
+                            break;
+                        case 1:
+                            Utils.PlaySoundFromAssert(this, lst.word2.audio);
+                            break;
+                        case 2:
+                            Utils.PlaySoundFromAssert(this, lst.key.audio);
+                            break;
+                    }
                 } else {
-                    mBtnAnswer1.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
-                    mBtnAnswer2.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
-                    mBtnAnswer3.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                    choiceAnswer1 = false;
+                    choiceAnswer2 = false;
+                    choiceAnswer3 = true;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        mBtnAnswer1.setBackgroundColor(getColor(R.color.colorButtonDefault));
+                        mBtnAnswer2.setBackgroundColor(getColor(R.color.colorButtonDefault));
+                        mBtnAnswer3.setBackgroundColor(getColor(R.color.colorAccent));
+                    } else {
+                        mBtnAnswer1.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
+                        mBtnAnswer2.setBackgroundColor(getResources().getColor(R.color.colorButtonDefault));
+                        mBtnAnswer3.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                    }
                 }
+
                 break;
             case R.id.btnPre:
                 if (!isContinue) {
-                    if (checkAnswer()) {
+                    if (checkAnswer(indexQuestion)) {
                         // play audio correct
+                        Utils.PlaySoundFromAssert(this, "correct");
                         point++;
                         mTvPoint.setText("Point\n" + String.valueOf(point));
                     } else {
                         //play audio wrong
+                        Utils.PlaySoundFromAssert(this, "wrong");
                     }
                     if (indexQuestion + 1 != lstListeningTest.size()) {
                         mBtnCheck.setText("CONTINUE");
@@ -163,12 +213,12 @@ public class ListeningActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void LoadQuestion(int index) {
+        canPlay = false;
         mTvQuestion.setText("Question\n" + String.valueOf(indexQuestion + 1) + "/" + lstListeningTest.size());
 
         mTvKey.setText("");
         mTvGuide.setText("Which word did you hear?");
         keyIndex = randomInt(3);
-        Toast.makeText(this, "" + keyIndex, Toast.LENGTH_SHORT).show();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             mBtnAnswer1.setBackgroundColor(getColor(R.color.colorButtonDefault));
             mBtnAnswer2.setBackgroundColor(getColor(R.color.colorButtonDefault));
@@ -198,21 +248,44 @@ public class ListeningActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-    private boolean checkAnswer() {
+    private boolean checkAnswer(int index) {
+        canPlay = true;
+        Listening listen = lstListeningTest.get(index);
+        mTvKey.setText(listen.key.word);
         switch (keyIndex) {
             case 0:
-                if (choiceAnswer1)
+                mBtnAnswer1.setText(listen.key.word + " - " + listen.key.pro);
+                mBtnAnswer2.setText(listen.word1.word + " - " + listen.word1.pro);
+                mBtnAnswer3.setText(listen.word2.word + " - " + listen.word2.pro);
+                if (choiceAnswer1) {
+                    mTvGuide.setText("Excellent!");
                     return true;
-                else return false;
-            case 1:
-                if (choiceAnswer2)
-                    return true;
-                else return false;
-            case 2:
-                if (choiceAnswer3)
-                    return true;
-                else
+                } else {
+                    mTvGuide.setText("Wrong answer!");
                     return false;
+                }
+            case 1:
+                mBtnAnswer1.setText(listen.word1.word + " - " + listen.word1.pro);
+                mBtnAnswer2.setText(listen.key.word + " - " + listen.key.pro);
+                mBtnAnswer3.setText(listen.word2.word + " - " + listen.word2.pro);
+                if (choiceAnswer2) {
+                    mTvGuide.setText("Excellent!");
+                    return true;
+                } else {
+                    mTvGuide.setText("Wrong answer!");
+                    return false;
+                }
+            case 2:
+                mBtnAnswer1.setText(listen.word2.word + " - " + listen.word2.pro);
+                mBtnAnswer2.setText(listen.word1.word + " - " + listen.word1.pro);
+                mBtnAnswer3.setText(listen.key.word + " - " + listen.key.pro);
+                if (choiceAnswer3) {
+                    mTvGuide.setText("Excellent!");
+                    return true;
+                } else {
+                    mTvGuide.setText("Wrong answer!");
+                    return false;
+                }
         }
         return false;
     }
