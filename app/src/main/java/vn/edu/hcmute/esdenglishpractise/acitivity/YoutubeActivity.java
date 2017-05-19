@@ -17,10 +17,12 @@ import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 import vn.edu.hcmute.esdenglishpractise.Model.Sound;
 import vn.edu.hcmute.esdenglishpractise.R;
+import vn.edu.hcmute.esdenglishpractise.database.SoundRepository;
 
 public class YoutubeActivity extends AppCompatActivity {
 
     private static final String API_KEY = "AIzaSyBlV71FnSEyyRZnmtHLpm9jnrRRPR4sjME";
+    private Sound sound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +43,13 @@ public class YoutubeActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        final Long soundId = intent.getLongExtra("soundId", -1);
-
-        final Sound sound = Sound.findById(Sound.class, soundId);
+        final int soundId = intent.getIntExtra("soundId", -1);
+        SoundRepository soundRepository = new SoundRepository(getApplicationContext());
+        try {
+            sound = soundRepository.findById(soundId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         TextView tvGuide = (TextView) findViewById(R.id.tvYoutube);
         tvGuide.setText(sound.text);

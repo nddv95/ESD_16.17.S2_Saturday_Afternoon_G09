@@ -13,6 +13,7 @@ import android.widget.TextView;
 import mehdi.sakout.fancybuttons.FancyButton;
 import vn.edu.hcmute.esdenglishpractise.Model.Lesson;
 import vn.edu.hcmute.esdenglishpractise.R;
+import vn.edu.hcmute.esdenglishpractise.database.LessonRepository;
 import vn.edu.hcmute.esdenglishpractise.util.Utils;
 
 public class LessonDetailActivity extends AppCompatActivity implements View.OnClickListener {
@@ -22,8 +23,9 @@ public class LessonDetailActivity extends AppCompatActivity implements View.OnCl
     FancyButton mSpeakingButton;
     ImageView mImageLesson;
     TextView mTvLessonTitle;
-    long id;
+    int id;
     private Lesson lesson;
+    private LessonRepository lessonRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,17 @@ public class LessonDetailActivity extends AppCompatActivity implements View.OnCl
             }
         });
 
+        lessonRepository = new LessonRepository(getApplicationContext());
+
         Intent intent = getIntent();
-        id = intent.getLongExtra("position", -1);
+        id = intent.getIntExtra("position", -1);
         mTvLessonTitle = (TextView) findViewById(R.id.tvLessonDetailTitle);
         if (id > 0) {
-            lesson = Lesson.findById(Lesson.class, id);
+            try {
+                lesson = lessonRepository.findById(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             mTvLessonTitle.setText(lesson.name.toUpperCase() + ": "
                     + lesson.sound1.sound + " vs " + lesson.sound2.sound);
         }

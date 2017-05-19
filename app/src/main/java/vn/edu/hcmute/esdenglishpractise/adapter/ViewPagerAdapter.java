@@ -12,6 +12,7 @@ import android.text.style.ImageSpan;
 
 import vn.edu.hcmute.esdenglishpractise.Model.Lesson;
 import vn.edu.hcmute.esdenglishpractise.R;
+import vn.edu.hcmute.esdenglishpractise.database.LessonRepository;
 import vn.edu.hcmute.esdenglishpractise.fragment.Tab1Fragment;
 import vn.edu.hcmute.esdenglishpractise.fragment.Tab2Fragment;
 
@@ -26,20 +27,31 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             R.drawable.ic_tab_1,
             R.drawable.ic_tab_2
     };
-    private long lessonId;
+    private LessonRepository lessonRepository;
+    private int lessonId;
+    private int soundid2;
+    private int soundid1;
 
-    public ViewPagerAdapter(FragmentManager fm, Context context, String[] tabTitles, Long lessonId) {
+    public ViewPagerAdapter(FragmentManager fm, Context context, String[] tabTitles, int lessonId) {
         super(fm);
         this.mContext = context;
         this.tabTitles = tabTitles;
         this.lessonId = lessonId;
+        this.lessonRepository = new LessonRepository(context);
     }
 
     @Override
     public Fragment getItem(int position) {
+
+        try {
+            soundid2 = this.lessonRepository.findById(lessonId).sound2.getId();
+            soundid1 = this.lessonRepository.findById(lessonId).sound1.getId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if (position == 0)
-            return Tab1Fragment.newInstance(Lesson.findById(Lesson.class, lessonId).sound1.getId());
-        return Tab2Fragment.newInstance(Lesson.findById(Lesson.class, lessonId).sound2.getId());
+            return Tab1Fragment.newInstance(soundid1);
+        return Tab2Fragment.newInstance(soundid2);
     }
 
     @Override

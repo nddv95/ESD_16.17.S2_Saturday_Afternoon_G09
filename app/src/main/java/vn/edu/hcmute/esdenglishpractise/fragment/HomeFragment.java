@@ -15,6 +15,7 @@ import java.util.List;
 import vn.edu.hcmute.esdenglishpractise.Model.Lesson;
 import vn.edu.hcmute.esdenglishpractise.R;
 import vn.edu.hcmute.esdenglishpractise.adapter.LessonAdapter;
+import vn.edu.hcmute.esdenglishpractise.database.LessonRepository;
 
 
 public class HomeFragment extends Fragment {
@@ -28,7 +29,13 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //ArrayList<Lesson> myLessons = new ArrayList<>();
-        List<Lesson> lstLessons = Lesson.listAll(Lesson.class);
+        LessonRepository lessonRepository = new LessonRepository(getActivity());
+        List<Lesson> lstLessons = null;
+        try {
+            lstLessons = lessonRepository.findAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         ArrayList<Lesson> myLessons = new ArrayList<>(lstLessons);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         RecyclerView lstLesson = (RecyclerView) view.findViewById(R.id.lstLesson);
@@ -37,7 +44,6 @@ public class HomeFragment extends Fragment {
         lstLesson.setLayoutManager(layoutManager);
         LessonAdapter lessonAdapter = new LessonAdapter(getActivity(), myLessons);
         lstLesson.setAdapter(lessonAdapter);
-        lstLessons = null;
         return view;
     }
 

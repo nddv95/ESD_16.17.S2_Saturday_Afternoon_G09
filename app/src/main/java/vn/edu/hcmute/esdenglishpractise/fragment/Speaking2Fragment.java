@@ -16,15 +16,17 @@ import java.util.List;
 import vn.edu.hcmute.esdenglishpractise.Model.Word;
 import vn.edu.hcmute.esdenglishpractise.R;
 import vn.edu.hcmute.esdenglishpractise.adapter.WordAdapter;
+import vn.edu.hcmute.esdenglishpractise.database.WordRepository;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Speaking2Fragment extends Fragment {
 
-    long soundId;
+    int soundId;
     private List<Word> wordArrayList = new ArrayList<>();
     private RecyclerView rcvWord;
+    private WordRepository wordRepository;
 
     public Speaking2Fragment() {
         // Required empty public constructor
@@ -38,8 +40,13 @@ public class Speaking2Fragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_speaking2, container, false);
 
         if (getArguments() != null)
-            soundId = getArguments().getLong("soundId");
-        wordArrayList = Word.find(Word.class, "sound = ?", String.valueOf(soundId));
+            soundId = getArguments().getInt("soundId");
+        wordRepository = new WordRepository(getActivity());
+        try {
+            wordArrayList = wordRepository.findWordBySoundId(soundId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         rcvWord = (RecyclerView) rootView.findViewById(R.id.rcvListWord2);
         rcvWord.setHasFixedSize(true);
@@ -56,7 +63,11 @@ public class Speaking2Fragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        wordArrayList = Word.find(Word.class, "sound = ?", String.valueOf(soundId));
+        try {
+            wordArrayList = wordRepository.findWordBySoundId(soundId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         WordAdapter wordAdapter = new WordAdapter(getActivity(), wordArrayList);
         rcvWord.setAdapter(wordAdapter);
     }

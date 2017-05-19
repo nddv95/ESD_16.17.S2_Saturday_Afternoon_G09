@@ -15,6 +15,7 @@ import mehdi.sakout.fancybuttons.FancyButton;
 import vn.edu.hcmute.esdenglishpractise.Model.Sound;
 import vn.edu.hcmute.esdenglishpractise.R;
 import vn.edu.hcmute.esdenglishpractise.acitivity.YoutubeActivity;
+import vn.edu.hcmute.esdenglishpractise.database.SoundRepository;
 import vn.edu.hcmute.esdenglishpractise.util.Utils;
 
 /**
@@ -26,16 +27,17 @@ public class Tab2Fragment extends Fragment {
     ImageView mImageGuide;
     TextView mTvGuide;
     FancyButton mBtnPlaySound, mBtnOpenVideo;
-    private long soundId;
+    private int soundId;
+    private Sound sound;
 
     public Tab2Fragment() {
         // Required empty public constructor
     }
 
-    public static Tab2Fragment newInstance(Long mSoundId) {
+    public static Tab2Fragment newInstance(int mSoundId) {
         Tab2Fragment fragment = new Tab2Fragment();
         Bundle args = new Bundle();
-        args.putLong(ARG_PARAM1, mSoundId);
+        args.putInt(ARG_PARAM1, mSoundId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -44,7 +46,7 @@ public class Tab2Fragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            soundId = getArguments().getLong(ARG_PARAM1);
+            soundId = getArguments().getInt(ARG_PARAM1);
         }
 
 
@@ -62,7 +64,13 @@ public class Tab2Fragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        final Sound sound = Sound.findById(Sound.class, soundId);
+        SoundRepository soundRepository = new SoundRepository(getActivity());
+
+        try {
+            sound = soundRepository.findById(soundId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         mImageGuide = (ImageView) getActivity().findViewById(R.id.imgGuide2);
         mImageGuide.setImageBitmap(Utils.LoadImageFromAssert(getContext(), sound.img));

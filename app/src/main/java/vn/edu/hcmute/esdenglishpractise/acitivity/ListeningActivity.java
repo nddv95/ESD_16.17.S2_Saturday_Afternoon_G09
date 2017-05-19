@@ -15,6 +15,7 @@ import java.util.Random;
 import mehdi.sakout.fancybuttons.FancyButton;
 import vn.edu.hcmute.esdenglishpractise.Model.Listening;
 import vn.edu.hcmute.esdenglishpractise.R;
+import vn.edu.hcmute.esdenglishpractise.database.ListeningRepository;
 import vn.edu.hcmute.esdenglishpractise.util.Utils;
 
 public class ListeningActivity extends AppCompatActivity implements View.OnClickListener {
@@ -28,9 +29,10 @@ public class ListeningActivity extends AppCompatActivity implements View.OnClick
     int keyIndex;
     int point = 0;
     int indexQuestion = 0;
-    long lessonId;
+    int lessonId;
     boolean canPlay = false;
     private List<Listening> lstListeningTest = new ArrayList<>();
+    private ListeningRepository listeningRepository;
 
     private static int randomInt(int range) {
         Random random = new Random();
@@ -56,9 +58,14 @@ public class ListeningActivity extends AppCompatActivity implements View.OnClick
         });
 
         Intent intent = getIntent();
-        lessonId = intent.getLongExtra("id", -1);
+        lessonId = intent.getIntExtra("id", -1);
 
-        lstListeningTest = Listening.find(Listening.class, "lesson = ?", String.valueOf(lessonId));
+        listeningRepository = new ListeningRepository(getApplicationContext());
+        try {
+            lstListeningTest = listeningRepository.findByLesson(lessonId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         mTvQuestion = (TextView) findViewById(R.id.tvQuestion);
 
@@ -219,6 +226,7 @@ public class ListeningActivity extends AppCompatActivity implements View.OnClick
         mTvKey.setText("");
         mTvGuide.setText("Which word did you hear?");
         keyIndex = randomInt(3);
+        Utils.PlaySoundFromAssert(getApplicationContext(),lstListeningTest.get(index).key.audio);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             mBtnAnswer1.setBackgroundColor(getColor(R.color.colorButtonDefault));
             mBtnAnswer2.setBackgroundColor(getColor(R.color.colorButtonDefault));

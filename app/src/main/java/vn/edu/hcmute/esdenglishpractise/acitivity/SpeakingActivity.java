@@ -11,13 +11,15 @@ import android.view.View;
 import vn.edu.hcmute.esdenglishpractise.Model.Lesson;
 import vn.edu.hcmute.esdenglishpractise.R;
 import vn.edu.hcmute.esdenglishpractise.adapter.SpeakingViewPaperAdapter;
+import vn.edu.hcmute.esdenglishpractise.database.LessonRepository;
 
 public class SpeakingActivity extends AppCompatActivity {
 
     TabLayout mTabSpeaking;
     Toolbar toolbar;
     ViewPager mViewPagerSpeaking;
-    long id;
+    int id;
+    private Lesson lesson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,21 @@ public class SpeakingActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        id = intent.getLongExtra("id", -1);
-        Lesson lesson = Lesson.findById(Lesson.class, id);
+        id = intent.getIntExtra("id", -1);
+        LessonRepository lessonRepository = new LessonRepository(getApplicationContext());
+        try {
+            lesson = lessonRepository.findById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         String titles[] = new String[]{lesson.sound1.sound, lesson.sound2.sound};
-        SpeakingViewPaperAdapter adapter = new SpeakingViewPaperAdapter(getSupportFragmentManager(), this, titles, id);
+        SpeakingViewPaperAdapter adapter = null;
+        try {
+            adapter = new SpeakingViewPaperAdapter(getSupportFragmentManager(), this, titles, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         mViewPagerSpeaking = (ViewPager) findViewById(R.id.viewPaperSpeaking);
         mViewPagerSpeaking.setAdapter(adapter);
 

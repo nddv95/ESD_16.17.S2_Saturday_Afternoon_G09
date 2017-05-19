@@ -1,12 +1,11 @@
 package vn.edu.hcmute.esdenglishpractise.Model;
 
-import com.orm.SugarRecord;
 
 /**
  * Created by nddv9 on 20/04/2017.
  */
 
-public class Word extends SugarRecord {
+public class Word extends BaseModel{
     public String word;
     public String audio;
     public String pro;
@@ -14,7 +13,8 @@ public class Word extends SugarRecord {
     public Sound sound;
     public int star;
 
-    public Word(String word, String audio, String pro, String mean, Sound sound, int star) {
+    public Word(int id, String word, String audio, String pro, String mean, Sound sound, int star) {
+        super(id);
         this.word = word;
         this.audio = audio;
         this.pro = pro;
@@ -23,6 +23,4 @@ public class Word extends SugarRecord {
         this.star = star;
     }
 
-    public Word() {
-    }
 }

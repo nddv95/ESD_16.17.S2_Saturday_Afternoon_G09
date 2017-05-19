@@ -18,7 +18,7 @@ import java.io.OutputStream;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = DatabaseHelper.class.getSimpleName();
-    private static final String DB_NAME = "data.db";
+    public static final String DB_NAME = "data.db";
     private SQLiteDatabase mDatabase;
     private Context mContext;
 
@@ -87,12 +87,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+
+
     @Override
     public synchronized void close() {
         if (mDatabase != null) {
             mDatabase.close();
         }
         super.close();
+    }
+
+    public SQLiteDatabase getmDatabase() {
+        return mDatabase;
     }
 }
 

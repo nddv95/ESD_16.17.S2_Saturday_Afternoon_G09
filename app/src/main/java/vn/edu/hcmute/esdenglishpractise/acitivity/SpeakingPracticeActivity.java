@@ -17,6 +17,7 @@ import java.util.List;
 import mehdi.sakout.fancybuttons.FancyButton;
 import vn.edu.hcmute.esdenglishpractise.Model.Word;
 import vn.edu.hcmute.esdenglishpractise.R;
+import vn.edu.hcmute.esdenglishpractise.database.WordRepository;
 import vn.edu.hcmute.esdenglishpractise.util.Utils;
 
 public class SpeakingPracticeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -26,6 +27,8 @@ public class SpeakingPracticeActivity extends AppCompatActivity implements View.
     FancyButton mBtnSpeaking, mBtnNext, mBtnPre, mBtnSound;
     private List<Word> lstWordsPractice;
     private int indexWord = -1;
+    private Word word;
+    private WordRepository wordRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +48,21 @@ public class SpeakingPracticeActivity extends AppCompatActivity implements View.
             }
         });
 
-        long wordId = getIntent().getLongExtra("wordid", 0);
+        int wordId = getIntent().getIntExtra("wordid", 0);
 
-        Word word = Word.findById(Word.class, wordId);
+        wordRepository = new WordRepository(getApplicationContext());
+        try {
+            word = wordRepository.findById(wordId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         getSupportActionBar().setTitle("Sound " + word.sound.sound + " practice");
-        lstWordsPractice = Word.find(Word.class, "sound = ?", String.valueOf(word.sound.getId()));
+        try {
+            lstWordsPractice = wordRepository.findWordBySoundId(word.sound.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         for (int i = 0; i < lstWordsPractice.size(); i++) {
             if (lstWordsPractice.get(i).getId() == word.getId()) {
                 indexWord = i;
@@ -255,10 +267,12 @@ public class SpeakingPracticeActivity extends AppCompatActivity implements View.
         }
     }
 
-    private void updateWord(long id, int star) {
+    private void updateWord(int id, int star) {
         lstWordsPractice.get(indexWord).star = star;
-        Word w = Word.findById(Word.class, id);
-        w.star = star;
-        w.save();
+        try {
+            wordRepository.updateStar(star, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
