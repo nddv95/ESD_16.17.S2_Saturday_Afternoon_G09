@@ -19,7 +19,6 @@ import java.io.OutputStream;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = DatabaseHelper.class.getSimpleName();
     private static final String DB_NAME = "data.db";
-    private static final String DB_LOCATION = "data/data/vn.edu.hcmute.esdenglishpractise/databases/";
     private SQLiteDatabase mDatabase;
     private Context mContext;
 
